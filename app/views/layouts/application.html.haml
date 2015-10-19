@@ -39,7 +39,7 @@
               %li
                 = link_to 'ログイン', user_session_path
     .container{role: 'main'}
-      .contents
+      #contents
         .row.flash-message
           .col-md-12
             - if notice
@@ -53,3 +53,17 @@
                   %span{'aria-hidden': true} &times;
                 = alert
         = yield
+    #footer.container
+      %ul.list-inline
+        %li
+          %a 運営会社
+        %li
+          %a プライバシーポリシー
+        %li
+          %a ご利用規約
+        %li
+          %a ヘルプ・よくある質問
+        %li
+          %a お問い合わせ
+      %address
+        Copyright &copy; ボケて (clone) All rights reserved Company
