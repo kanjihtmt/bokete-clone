@@ -8,5 +8,8 @@ Rails.application.routes.draw do
   get 'accounts/email'
   get 'accounts/delete'
 
+  resources :themes
+  resources :bokes
+
   devise_for :users
 end
