@@ -1,0 +1,19 @@
+%h1 Listing bokes
+
+%table
+  %thead
+    %tr
+      %th
+      %th
+      %th
+
+  %tbody
+    - @bokes.each do |boke|
+      %tr
+        %td= link_to 'Show', boke
+        %td= link_to 'Edit', edit_boke_path(boke)
+        %td= link_to 'Destroy', boke, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Boke', new_boke_path
