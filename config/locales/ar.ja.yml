@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザ
+    attributes:
+      user:
+        name: ユーザ名
+
