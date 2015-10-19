@@ -4,12 +4,12 @@
     %meta{charset: 'utf-8'}
     %meta{content: 'IE=edge', 'http-equiv': "X-UA-Compatible"}
     %meta{name: 'viewport', content: 'width=device-width, initial-scale=1'}
-    %title Bokete Clone
+    %title ボケて（clone） - 写真で一言ボケるWebサービス
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
     = csrf_meta_tags
   %body
-    %nav.navbar.navbar-inverse.navbar-fixed-top
+    %nav.navbar.navbar-fixed-top
       .container
         .navbar-header
           %button.navbar-toggle.collapsed{type: "button", 'data-toggle': "collapse", 'data-target': "#navbar", 'aria-expanded': false, 'aria-controls': "navbar"}
@@ -17,9 +17,17 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          = link_to 'ボケて', root_path, class: 'navbar-brand'
+          #logo.navbar-brand
+            = link_to 'bokete', root_path
         #navbar.collapse.navbar-collapse
-          %ul.nav.navbar-nav
+          %ul.nav.navbar-nav.navbar-left
+            %li
+              = link_to 'ボケ', '#'
+            %li
+              = link_to 'お題', '#'
+            %li
+              = link_to '職人', '#'
+          %ul.nav.navbar-nav.navbar-right
             - if user_signed_in?
               %li
                 = link_to current_user.try(:name), '#'

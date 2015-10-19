@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'accounts#my'
+  root 'bokes#index'
 
   get 'accounts/my'
   get 'accounts/show'
