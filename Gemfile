@@ -21,6 +21,7 @@ gem 'simple_form'
 gem 'kaminari'
 gem 'kaminari-bootstrap'
 gem 'gretel'
+gem 'rails-i18n'
 
 group :development do
   gem 'better_errors'
