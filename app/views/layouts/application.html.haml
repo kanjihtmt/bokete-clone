@@ -39,6 +39,17 @@
               %li
                 = link_to 'ログイン', user_session_path
     .container{role: 'main'}
+      .row
+        .col-md-12
+          .pull-left.breadcrumb= breadcrumbs
+          .pull-right.ratings
+            %ul.list-inline
+              %li
+                ボケ投稿数
+                %span.post-count 100件
+              %li
+                お題投稿数
+                %span.post-count 1,709,777件
       #contents
         .row.flash-message
           .col-md-12

@@ -20,6 +20,7 @@ gem 'devise'
 gem 'simple_form'
 gem 'kaminari'
 gem 'kaminari-bootstrap'
+gem 'gretel'
 
 group :development do
   gem 'better_errors'
