@@ -7,6 +7,10 @@ crumb :login do
   parent :root
 end
 
+crumb :accounts do
+  link "アカウント編集", edit_accounts_path
+  parent :root
+end
 # crumb :projects do
 #   link "Projects", projects_path
 # end

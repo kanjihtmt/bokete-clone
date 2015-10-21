@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
   root 'bokes#index'
 
-  get 'accounts/my'
-  get 'accounts/show'
-  get 'accounts/photo'
-  get 'accounts/password'
-  get 'accounts/email'
-  get 'accounts/delete'
+  resource :accounts, except: %i(new create) do
+    get 'photo'
+    get 'password'
+    get 'email'
+  end
 
   resources :themes
   resources :bokes

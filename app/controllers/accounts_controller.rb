@@ -1,8 +1,15 @@
 class AccountsController < ApplicationController
-  def my
+  def show
   end
 
-  def show
+  def edit
+    @user = current_user
+  end
+
+  def update
+  end
+
+  def delete
   end
 
   def photo
@@ -14,6 +21,4 @@ class AccountsController < ApplicationController
   def email
   end
 
-  def delete
-  end
 end

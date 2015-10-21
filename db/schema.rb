@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151019100940) do
+ActiveRecord::Schema.define(version: 20151021142800) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "bokes", force: :cascade do |t|
     t.text     "text"
@@ -62,6 +65,15 @@ ActiveRecord::Schema.define(version: 20151019100940) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "name"
+    t.string   "nickname"
+    t.integer  "sex"
+    t.boolean  "sex_secret"
+    t.date     "birthday"
+    t.boolean  "birthday_secret"
+    t.integer  "pref"
+    t.boolean  "pref_secret"
+    t.text     "profile"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
