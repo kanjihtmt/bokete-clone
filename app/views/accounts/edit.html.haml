@@ -1,0 +1,26 @@
+- breadcrumb :accounts
+
+.row
+  %ul.nav.nav-tabs
+    %li
+      %a{href: '#'} マイページ
+    %li.active
+      %a{href: '#'} 設定
+    %li
+      %a{href: '#'} ログアウト
+
+  #wrapper.col-md-12
+    %div.btn-group.list-inline.category-tab-menu
+      %li.btn.active
+        = link_to 'プロフィール編集', edit_accounts_path
+      %li.btn
+        = link_to 'プロフィール写真編集', photo_accounts_path
+      %li.btn
+        = link_to 'パスワード編集', password_accounts_path
+      %li.btn
+        = link_to 'メアド編集', email_accounts_path
+      %li.btn
+        = link_to '退会手続き', destroy_user_session_path
+
+    %h2 プロフィールの変更
+
