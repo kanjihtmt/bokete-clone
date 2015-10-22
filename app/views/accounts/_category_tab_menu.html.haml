@@ -1,0 +1,11 @@
+%div.btn-group.list-inline.category-tab-menu
+  %li.btn{class: action_name == 'edit' ? 'active' : ''}
+    = link_to 'プロフィール編集', edit_accounts_path
+  %li.btn{class: action_name == 'photo' ? 'active' : ''}
+    = link_to 'プロフィール写真編集', photo_accounts_path
+  %li.btn{class: action_name == 'password' ? 'active' : ''}
+    = link_to 'パスワード編集', password_accounts_path
+  %li.btn{class: action_name == 'email' ? 'active' : ''}
+    = link_to 'メアド編集', email_accounts_path
+  %li.btn
+    = link_to '退会手続き', destroy_user_session_path
