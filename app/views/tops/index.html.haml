@@ -36,9 +36,57 @@
       .text-center
         = link_to 'もっとみる', bokes_path(tab: 'popular'), class: 'btn btn-warning btn-long'
 
-      %h2 注目ボケ
+      %h2.index-title 注目ボケ
+
+      - 1.step(6) do |i|
+        .boke-horizon.col-md-4
+          %a.photo{href: "/boke/36699959"}
+            %img{src: "//d2dcan0armyq93.cloudfront.net/photo/odai/600/d706a89dadfe97fdac87ef9dfb866273_600.jpg"}
+          .photo-meta
+            %a{href: "/user/Yuki1984"}
+              %span.fa.fa-camera{title: "photo by"}
+                ユキ
+            %a{href: "/user/Yuki1984"}
+              %span.fa.fa-picture-o{title: "oday by"}
+                ユキ
+          .text ーとなんじゃねーの？どんだけ暇だよ
+          .rating
+            %a{href: "/boke/36699959"}
+              %i.fa.fa-star.fa-lg
+              &nbsp;
+              %b 1,357
+        - if i % 3  == 0
+          .clear
+
+      .text-center.clearfix
+        = link_to 'もっとみる', bokes_path(tab: 'hot'), class: 'btn btn-warning btn-long'
 
       %h2 新着ボケ
+
+      - 1.step(6) do |i|
+        .boke-horizon.col-md-4
+          %a.photo{href: "/boke/36699959"}
+            %img{src: "//d2dcan0armyq93.cloudfront.net/photo/odai/600/d706a89dadfe97fdac87ef9dfb866273_600.jpg"}
+          .photo-meta
+            %a{href: "/user/Yuki1984"}
+              %span.fa.fa-camera{title: "photo by"}
+                ユキ
+            %a{href: "/user/Yuki1984"}
+              %span.fa.fa-picture-o{title: "oday by"}
+                ユキ
+          .text ーとなんじゃねーの？どんだけ暇だよ
+          .rating
+            %a{href: "/boke/36699959"}
+              %i.fa.fa-star.fa-lg
+              &nbsp;
+            %b 1,357
+
+        - if i % 3  == 0
+          .clear
+
+
+      .text-center.clearfix
+        = link_to 'もっとみる', bokes_path(tab: 'hot'), class: 'btn btn-warning btn-long'
 
   .col-md-4
     = render 'widget'
