@@ -1,0 +1,44 @@
+- breadcrumb breadcrumbs_for_bokes(params[:tab])
+
+.row
+  .col-md-8
+    = render 'bokes_tabs'
+
+    .wrapper.clearfix
+      %h2 人気ボケ
+      .boke
+        .boke-photo
+          .boke-photo-content
+            %a{href: "/odai/1714604"}
+              %img{src: "//d2dcan0armyq93.cloudfront.net/photo/odai/600/0b7bd42def3aa49e7846d38f2b795f0f_600.jpg"}
+            .boke-photo-meta
+              %a
+                %span.fa.fa-camera{title: 'photo by'} おらんゆうたん
+              &nbsp;
+              %a
+                %span.fa.fa-picture-o{title: 'odai by'} おらんゆうたん
+
+        %h3{class: "boke-text"} こ／やめとこうよ、何かヤバイって！
+
+        .boke-meta.clearfix
+          .boke-information
+            .boke-information-row
+              .boke-stars
+                %a{href: "/boke/36625240", target: "_self"}
+                  %i.fa.fa-star{style: "color:#ebbf2a;"}
+                  9,015
+              .boke-information-label
+                %a{href: "/boke/36625240", target: "_self"} 2日くらい前
+            .boke-information-row
+              .boke-rate
+
+
+      .text-center
+        = link_to 'もっとみる', bokes_path(tab: 'popular'), class: 'btn btn-warning btn-long'
+
+      %h2 注目ボケ
+
+      %h2 新着ボケ
+
+  .col-md-4
+    = render 'widget'

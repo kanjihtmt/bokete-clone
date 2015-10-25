@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'bokes#index'
+  root 'tops#index'
 
   resource :accounts, except: %i(new create) do
     get 'photo'

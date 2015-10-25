@@ -1,0 +1,52 @@
+.side-widget
+  .banner
+    = link_to bokes_path(tab: 'legend'), {class: 'banner'} do
+      3秒で笑える殿堂入りボケ<br>bokelegends
+.side-widget
+  .side-widget-title
+    %i.fa.fa-commenting
+    最近のコメント
+  .side-widget-content
+    %ul.list-unstyled
+      %li
+        %dl.dl-horizontal
+          %dt
+            %a{href: '/user/2014031'}
+              %img{src: "//bokete-photo-gamma.s3.amazonaws.com/photo/profile/48/2014031_48.jpg?1431113554", class: 'user-icon'}
+          %dd= link_to 'マジであれヤメてほしい', '#'
+      %li
+        %dl.dl-horizontal
+          %dt
+            %a{href: '/user/2014031'}
+              %img{src: "//bokete-photo-gamma.s3.amazonaws.com/photo/profile/48/2014031_48.jpg?1431113554", class: 'user-icon'}
+          %dd= link_to 'マジであれヤメてほしい', '#'
+      %li
+        %dl.dl-horizontal
+          %dt
+            %a{href: '/user/2014031'}
+              %img{src: "//bokete-photo-gamma.s3.amazonaws.com/photo/profile/48/2014031_48.jpg?1431113554", class: 'user-icon'}
+          %dd= link_to 'マジであれヤメてほしい', '#'
+.side-widget
+  .side-widget-title
+    %i.fa.fa-star
+    最近評価されている職人
+  .side-widget-content
+    %ul.list-unstyled
+      %li
+        %dl.dl-horizontal
+          %dt
+            %a{href: '/user/2014031'}
+              %img{src: "//bokete-photo-gamma.s3.amazonaws.com/photo/profile/48/2014031_48.jpg?1431113554", class: 'user-icon'}
+          %dd= link_to '職人1'
+      %li
+        %dl.dl-horizontal
+          %dt
+            %a{href: '/user/2014031'}
+              %img{src: "//bokete-photo-gamma.s3.amazonaws.com/photo/profile/48/2014031_48.jpg?1431113554", class: 'user-icon'}
+          %dd= link_to '職人2'
+      %li
+        %dl.dl-horizontal
+          %dt
+            %a{href: '/user/2014031'}
+              %img{src: "//bokete-photo-gamma.s3.amazonaws.com/photo/profile/48/2014031_48.jpg?1431113554", class: 'user-icon'}
+          %dd= link_to '職人3'
