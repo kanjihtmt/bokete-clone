@@ -1,23 +1,63 @@
 - breadcrumb breadcrumbs_for_bokes(params[:tab])
 
 .row
-  .col-md-9
+  .col-md-8
     = render 'bokes_tabs'
-
     .wrapper
-      %h2 人気ボケ
-      %table
-        %thead
-          %tr
-            %th
-            %th
-            %th
+      = render 'bokes/category_tab_menu'
 
+      - 5.times do
+        .boke
+          .boke-photo
+            .boke-photo-content
+              %a{href: "/odai/1714604"}
+                %img{src: "//d2dcan0armyq93.cloudfront.net/photo/odai/600/0b7bd42def3aa49e7846d38f2b795f0f_600.jpg"}
+              .boke-photo-meta
+                %a
+                  %span.fa.fa-camera{title: 'photo by'} photo by おらんゆうたん
+                &nbsp;
+                %a
+                  %span.fa.fa-picture-o{title: 'odai by'} odai by おらんゆうたん
 
-  .col-md-3
-    サイドナビ
+          %h3{class: "boke-text"} こ／やめとこうよ、何かヤバイって！
 
+          .boke-meta.clearfix
+            .boke-information
+              .boke-information-row
+                .boke-stars
+                  %a{href: "/boke/36625240", target: "_self"}
+                    %i.fa.fa-star{style: "color:#ebbf2a;"}
+                    9,015
+                .boke-information-label
+                  %a{href: "/boke/36625240", target: "_self"} 2日くらい前
+              .boke-information-row
+                .boke-rate
 
-%br
+        .boke
+          .boke-photo
+            .boke-photo-content
+              %a{href: "/odai/1714604"}
+                %img{src: "//d2dcan0armyq93.cloudfront.net/photo/odai/600/c788e2ae3ccee666374683a087fc6803_600.jpg"}
+              .boke-photo-meta
+                %a
+                  %span.fa.fa-camera{title: 'photo by'} photo by 少林
+                &nbsp;
+                %a
+                  %span.fa.fa-picture-o{title: 'odai by'} odai by 少林
 
-= link_to 'New Boke', new_boke_path
+          %h3{class: "boke-text"} 北風「これから勝負をしようではないか」太陽「不戦勝でいいから全力で行け」
+
+          .boke-meta.clearfix
+            .boke-information
+              .boke-information-row
+                .boke-stars
+                  %a{href: "/boke/36625240", target: "_self"}
+                    %i.fa.fa-star{style: "color:#ebbf2a;"}
+                    9,015
+                .boke-information-label
+                  %a{href: "/boke/36625240", target: "_self"} 2日くらい前
+              .boke-information-row
+                .boke-rate
+  .col-md-4
+    = render 'widget'
+

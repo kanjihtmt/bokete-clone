@@ -1,6 +1,10 @@
 %ul.nav.nav-tabs
-  %li{class: !params[:tab].present? ? 'active' : ''}
-    = link_to 'トップ', root_path
+  - if controller_name == 'tops'
+    %li{class: !params[:tab].present? ? 'active' : ''}
+      = link_to 'トップ', root_path
+  - else
+    %li{class: !params[:tab].present? ? 'active' : ''}
+      = link_to '新着', bokes_path
   %li{class: params[:tab] == 'hot' ? 'active' : ''}
     = link_to '注目', bokes_path(tab: 'hot')
   %li{class: params[:tab] == 'popular' ? 'active' : ''}
