@@ -8,7 +8,10 @@ Rails.application.routes.draw do
   end
 
   resources :themes
-  resources :bokes
+
+  resources :bokes, except: %i(new edit update destroy) do
+    get ':theme_id/new' => 'bokes#new', on: :collection
+  end
 
   devise_for :users
 end

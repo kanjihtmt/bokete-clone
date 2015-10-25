@@ -1,5 +1,24 @@
-%h1 New boke
+- breadcrumb breadcrumbs_for_bokes(params[:tab])
 
-= render 'form'
+.row
+  .col-md-8
+    = render 'bokes_tabs'
+    .wrapper
+      %h2 このお題でボケる
 
-= link_to 'Back', bokes_path
+      .boke
+        .boke-photo
+          .boke-photo-content
+            %a{href: "/odai/1714604"}
+              %img{src: "//d2dcan0armyq93.cloudfront.net/photo/odai/600/c788e2ae3ccee666374683a087fc6803_600.jpg"}
+            .boke-photo-meta
+              %a
+                %span.fa.fa-camera{title: 'photo by'} photo by 少林
+              &nbsp;
+              %a
+                %span.fa.fa-picture-o{title: 'odai by'} odai by 少林
+
+      = render 'form'
+
+  .col-md-4
+    = render 'widget'

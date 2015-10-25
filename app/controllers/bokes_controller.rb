@@ -1,5 +1,5 @@
 class BokesController < ApplicationController
-  before_action :set_boke, only: [:show, :edit, :update, :destroy]
+  before_action :set_theme, except: %i(index)
 
   def index
     @bokes = Boke.all
@@ -9,14 +9,11 @@ class BokesController < ApplicationController
   end
 
   def new
-    @boke = Boke.new
-  end
-
-  def edit
+    @boke = @theme.bokes.build
   end
 
   def create
-    @boke = Boke.new(boke_params)
+    @boke = @themes.bokes.build(boke_params)
 
     if @boke.save
       redirect_to @boke, notice: 'ボケを作成しました。'
@@ -25,25 +22,13 @@ class BokesController < ApplicationController
     end
   end
 
-  def update
-    if @boke.update(boke_params)
-      redirect_to @boke, notice: 'ボケを更新しました。'
-    else
-      render :edit
-    end
-  end
-
-  def destroy
-    @boke.destroy
-    redirect_to bokes_url, notice: 'ボケを削除しました。'
-  end
-
   private
-    def set_boke
-      @boke = Boke.find(params[:id])
+    def set_theme
+      #@theme = Theme.find(params[:theme_id])
+      @theme = Theme.new
     end
 
     def boke_params
-      params[:boke]
+      params.require(:boke).permit(:theme_id, :text, :tag, :category_id)
     end
 end
