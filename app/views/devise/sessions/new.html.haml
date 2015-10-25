@@ -1,7 +1,7 @@
 - breadcrumb :login
 
 .row
-  #wrapper.col-md-12
+  .wrapper.col-md-12
     %h2 ボケてにログイン
 
     .registration
@@ -16,9 +16,9 @@
     .login-description
       %p
         パスワードを忘れた場合は
-        = link_to 'パスワード再発行フォーム', '#'
+        = link_to 'パスワード再発行フォーム', new_user_password_path
         より、新規パスワードを登録してログインしてください。ボケてのアカウントをまだ取得していない方は
-        = link_to '新規登録', '#'
+        = link_to '新規登録', new_user_registration_path
         から新しく登録をお願いします。登録・利用ともに完全無料です。
 
   .scroll-to-top.text-right.clearfix

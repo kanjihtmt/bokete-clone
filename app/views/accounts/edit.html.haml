@@ -3,8 +3,19 @@
 .row
   = render 'tabs'
 
+  = 'category_tab_menu'
   .wrapper.col-md-12
-    = render 'category_tab_menu'
+    %div.btn-group.list-inline.category-tab-menu
+      %li.btn.active
+        = link_to 'プロフィール編集', edit_accounts_path
+      %li.btn
+        = link_to 'プロフィール写真編集', photo_accounts_path
+      %li.btn
+        = link_to 'パスワード編集', password_accounts_path
+      %li.btn
+        = link_to 'メアド編集', email_accounts_path
+      %li.btn
+        = link_to '退会手続き', destroy_user_session_path
 
     %h2 プロフィールの変更
 

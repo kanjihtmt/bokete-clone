@@ -1,18 +1,22 @@
-%h1 Listing bokes
+- breadcrumb breadcrumbs_for_bokes(params[:tab])
 
-%table
-  %thead
-    %tr
-      %th
-      %th
-      %th
+.row
+  .col-md-9
+    = render 'bokes_tabs'
 
-  %tbody
-    - @bokes.each do |boke|
-      %tr
-        %td= link_to 'Show', boke
-        %td= link_to 'Edit', edit_boke_path(boke)
-        %td= link_to 'Destroy', boke, :method => :delete, :data => { :confirm => 'Are you sure?' }
+    .wrapper
+      %h2 人気ボケ
+      %table
+        %thead
+          %tr
+            %th
+            %th
+            %th
+
+
+  .col-md-3
+    サイドナビ
+
 
 %br
 
