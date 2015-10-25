@@ -16,23 +16,24 @@ body
 .navbar-header
   #logo > a
     font-weight: bold
-    font-size: 1.8em
+    font-size: 1.4em
     color: #ECC027
     text-decoration: none
-    -webkit-text-stroke-color: #000
-    -webkit-text-stroke-width: 1px
+    text-shadow: -1px -1px #000, 1px -1px #000, -1px 1px #000, 1px 1px #000
 
 .navbar-toggle, .icon-bar
   border: 1px solid #000000
 
 .breadcrumb
   background-color: #F2EFED
-  border: none
-  padding: 8px 0 2px
-  margin-bottom: 0
-  font-size: 0.9em
-  span.current
-    font-weight: bold
+  a, span.current
+    color: #666
+.breadcrumb a
+  &:before
+    content: "\26fa"
+  &:hover
+    text-decoration: none
+
 
 .ratings
   padding: 8px 0 2px
@@ -59,6 +60,10 @@ body
       margin-bottom: 10px
       padding: 20px
       min-height: 500px
+
+.form-inputs
+  .input
+    margin-top: 10px
 
 h2
   border-bottom: 2px solid #f4c536
@@ -87,6 +92,55 @@ h2
 
 .horizontal-form-wapper
 
+.side-widget
+  margin: 0 0 1em
+  background-color: #fff
+  border: 1px solid #cbcbcb
+
+  .banner
+    font-size: 12.5px
+    text-align: center
+    padding: 10px 0
+    a
+      vertical-align: middle
+      height: 50px
+      background-color: transparent
+      font-weight: bold
+      font-size: 1.2em
+      color: #ECC027
+      text-decoration: none
+      text-shadow: -1px -1px #000, 1px -1px #000, -1px 1px #000, 1px 1px #000
+
+  .side-widget-title
+    font-size: 16px
+    font-weight: bold
+    margin: 0.5em
+    i.fa-star
+      color: #ebbf2a
+
+  .side-widget-content
+    margin: 0.5em
+    dl
+      padding: 0.2em 1em
+      margin: 0
+      dt
+        width: 25px
+      dd
+        margin-left: 30px
+        a
+          font-size: 0.9em
+
+.btn-long
+  width: 400px
+
+
+.user-icon
+  width: 24px
+  height: 24px
+  border: 1px solid #999
+  -moz-border-radius: 24px
+  -webkit-border-radius: 24px
+  border-radius: 24px
 
 #footer
   font-size: 13px

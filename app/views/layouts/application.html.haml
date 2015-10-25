@@ -22,9 +22,9 @@
         #navbar.collapse.navbar-collapse
           %ul.nav.navbar-nav.navbar-left
             %li
-              = link_to 'ボケ', '#'
+              = link_to 'ボケ', bokes_path(tab: 'hot')
             %li
-              = link_to 'お題', '#'
+              = link_to 'お題', themes_path
             %li
               = link_to '職人', '#'
           %ul.nav.navbar-nav.navbar-right
@@ -41,7 +41,7 @@
     .container{role: 'main'}
       .row
         .col-md-12
-          .pull-left.breadcrumb= breadcrumbs
+          .pull-left= breadcrumbs class: 'breadcrumb'
           .pull-right.ratings
             %ul.list-inline
               %li

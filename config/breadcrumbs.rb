@@ -11,6 +11,37 @@ crumb :accounts do
   link "アカウント編集", edit_accounts_path
   parent :root
 end
+
+crumb :top do
+  link "ボケてへようこそ", bokes_path
+  parent :root
+end
+
+crumb :hot do
+  link "注目ボケ", bokes_path(tab: 'hot')
+  parent :root
+end
+
+crumb :popular do
+  link "人気ボケ", bokes_path(tab: 'popular')
+  parent :root
+end
+
+crumb :pickup do
+  link "ピックアップ", bokes_path(tab: 'pickup')
+  parent :root
+end
+
+crumb :select do
+  link "セレクト", bokes_path(tab: 'select')
+  parent :root
+end
+
+crumb :legend do
+  link "殿堂入りボケ", bokes_path(tab: 'legend')
+  parent :root
+end
+
 # crumb :projects do
 #   link "Projects", projects_path
 # end
