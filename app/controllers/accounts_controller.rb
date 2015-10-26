@@ -1,5 +1,5 @@
 class AccountsController < ApplicationController
-  before_action :set_user, only: %i(edit photo password email)
+  before_action :set_user, only: %i(edit photo password email withdraw)
 
   def show
   end
@@ -10,7 +10,7 @@ class AccountsController < ApplicationController
   def update
   end
 
-  def delete
+  def withdraw
   end
 
   def photo

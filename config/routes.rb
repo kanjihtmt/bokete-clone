@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
   root 'tops#index'
 
-  resource :accounts, except: %i(new create) do
+  resource :accounts, except: %i(new create destroy) do
     get 'photo'
     get 'password'
     get 'email'
+    get 'withdraw'
   end
 
   resources :themes
@@ -13,5 +14,5 @@ Rails.application.routes.draw do
     get ':theme_id/new' => 'bokes#new', on: :collection
   end
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'registrations' }
 end
