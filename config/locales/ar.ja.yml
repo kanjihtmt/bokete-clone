@@ -2,7 +2,13 @@ ja:
   activerecord:
     models:
       user: ユーザ
+      boke: ボケ
     attributes:
       user:
         name: ユーザ名
+      boke:
+        text: ボケテキスト
+        tag: タグ
+        category: カテゴリ
+
 
