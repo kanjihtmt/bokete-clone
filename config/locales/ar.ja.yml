@@ -4,5 +4,13 @@ ja:
       user: ユーザ
     attributes:
       user:
-        name: ユーザ名
+        name: ボケてアカウント
+        nickname: ニックネーム (10文字以内)
+        sex: 性別
+        sex_secret: 非公開
+        birthday: 生年月日
+        birthday_secret: 非公開
+        pref: 居住地
+        pref_secret: 非公開
+        profile: プロフィール
 
