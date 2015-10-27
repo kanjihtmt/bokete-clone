@@ -37,7 +37,8 @@
               = f.input_field :pref_secret, as: :boolean, boolean_style: :inline
         = f.input :profile, :input_html => {:rows => 6}
 
-        = f.submit '更新', class: 'btn btn-warning'
+        .form-actions.text-center
+          = f.submit '更新', class: 'btn btn-warning'
 
   .col-md-3.no-padding
     = render 'widget'

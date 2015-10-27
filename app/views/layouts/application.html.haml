@@ -30,7 +30,9 @@
           %ul.nav.navbar-nav.navbar-right
             - if user_signed_in?
               %li
-                = link_to current_user.try(:name), '#'
+                = link_to '#' do
+                  = image_tag(current_user.avatar.url, {class: 'user-icon-top-bar img-circle'})
+                  = current_user.try(:name)
               %li
                 = link_to 'マイページ', accounts_path
             - else

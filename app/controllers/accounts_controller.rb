@@ -18,7 +18,6 @@ class AccountsController < ApplicationController
   end
 
   def photo
-    # TODO
   end
 
   def password
@@ -46,8 +45,8 @@ class AccountsController < ApplicationController
 
     def user_params
       params.require(:user).permit(
-        :name, :nickname, :sex, :sex_secret, :birthday, :birthday_secret, :email,
-        :pref, :pref_secret, :profile, :current_password, :password, :password_confirmation
+        :name, :nickname, :sex, :sex_secret, :birthday, :birthday_secret, :email, :pref,
+        :pref_secret, :profile, :current_password, :password, :password_confirmation, :avatar
       )
     end
 end

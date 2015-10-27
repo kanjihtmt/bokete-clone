@@ -22,6 +22,8 @@ gem 'kaminari'
 gem 'kaminari-bootstrap'
 gem 'gretel'
 gem 'rails-i18n'
+gem 'carrierwave'
+gem 'rmagick', require: 'RMagick'
 
 group :development do
   gem 'better_errors'
