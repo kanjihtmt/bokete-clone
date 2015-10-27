@@ -1,5 +1,16 @@
-%h1 New theme
+- breadcrumb breadcrumbs_for_bokes(params[:tab])
 
-= render 'form'
+.row
+  .col-md-8
 
-= link_to 'Back', themes_path
+    .wrapper
+      %h2
+        %i.fa.fa-picture-o
+        手持ちの写真からお題を投稿する
+
+      .boke
+        .boke-photo
+          .boke-photo-content
+
+  .col-md-4
+    = render 'widget'

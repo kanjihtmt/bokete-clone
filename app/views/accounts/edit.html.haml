@@ -3,19 +3,37 @@
 .row
   = render 'tabs'
 
-  = 'category_tab_menu'
-  .wrapper.col-md-12
-    %div.btn-group.list-inline.category-tab-menu
-      %li.btn.active
-        = link_to 'プロフィール編集', edit_accounts_path
-      %li.btn
-        = link_to 'プロフィール写真編集', photo_accounts_path
-      %li.btn
-        = link_to 'パスワード編集', password_accounts_path
-      %li.btn
-        = link_to 'メアド編集', email_accounts_path
-      %li.btn
-        = link_to '退会手続き', destroy_user_session_path
+  .wrapper.col-md-9
+    = render 'category_tab_menu'
 
     %h2 プロフィールの変更
 
+    = simple_form_for @user, url: accounts_path,
+        wrapper: :horizontal_form, html: { class: 'form-horizontal' } do |f|
+      = f.input :name
+      = f.input :nickname
+      .form-group.string.optional
+        %label.string.optional.col-sm-3.control-label{for: 'user_sex'} 性別
+        .col-sm-9.form-inline
+          = f.input_field :sex, as: :select, class: 'form-control'
+          %label.no-bold{for: 'user_sex_secret'}
+            非公開
+            = f.input_field :sex_secret, as: :boolean, boolean_style: :inline
+      .form-group.string.optional
+        %label.string.optional.col-sm-3.control-label{for: 'user_birthday'} 生年月日
+        .col-sm-9.form-inline
+          = f.input_field :birthday, as: :select, class: 'form-control'
+          %label.no-bold{for: 'user_birthday_secret'}
+            非公開
+            = f.input_field :birthday_secret, as: :boolean, boolean_style: :inline
+      .form-group.string.optional
+        %label.string.optional.col-sm-3.control-label{for: 'user_pref'} 居住地
+        .col-sm-9.form-inline
+          = f.input_field :pref, as: :select, class: 'form-control'
+          %label.no-bold{for: 'user_pref_secret'}
+            非公開
+            = f.input_field :pref_secret, as: :boolean, boolean_style: :inline
+      = f.input :profile
+
+  .col-md-3
+    = render 'widget'

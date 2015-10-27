@@ -1,0 +1,20 @@
+- breadcrumb :accounts
+
+.row
+  = render 'tabs'
+
+  .wrapper.col-md-8
+    = render 'category_tab_menu'
+
+    %h2 退会
+    %p 本当に退会しますか？
+    %p 退会をすると、今までのボケ等は削除されます。 また、再度同じ「ボケてアカウント名」「メールアドレス」での会員登録はできません。
+
+    = simple_form_for @user, url: user_registration_path, method: :delete do |f|
+
+      .form-actions.text-center
+        = f.button :submit, "退会する", class: 'btn btn-warning'
+
+  .col-md-4
+    = render 'widget'
+
