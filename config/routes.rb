@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resource :accounts, except: %i(new create destroy) do
     get 'photo'
     get 'password'
+    patch 'update_password'
     get 'email'
     get 'withdraw'
   end

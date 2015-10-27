@@ -15,25 +15,28 @@
       .form-group.string.optional
         %label.string.optional.col-sm-3.control-label{for: 'user_sex'} 性別
         .col-sm-9.form-inline
-          = f.input_field :sex, as: :select, class: 'form-control'
+          = f.input_field :sex, collection: { '男性' => 1, '女性' => 2 },
+              include_blank: false, as: :select, class: 'form-control'
           %label.no-bold{for: 'user_sex_secret'}
             非公開
             = f.input_field :sex_secret, as: :boolean, boolean_style: :inline
       .form-group.string.optional
         %label.string.optional.col-sm-3.control-label{for: 'user_birthday'} 生年月日
         .col-sm-9.form-inline
-          = f.input_field :birthday, as: :select, class: 'form-control'
+          = f.input_field :birthday, class: 'form-control', start_year: 1950
           %label.no-bold{for: 'user_birthday_secret'}
             非公開
             = f.input_field :birthday_secret, as: :boolean, boolean_style: :inline
       .form-group.string.optional
         %label.string.optional.col-sm-3.control-label{for: 'user_pref'} 居住地
         .col-sm-9.form-inline
-          = f.input_field :pref, as: :select, class: 'form-control'
+          = f.input_field :pref, collection: Pref.all, include_blank: false, as: :select, class: 'form-control'
           %label.no-bold{for: 'user_pref_secret'}
             非公開
             = f.input_field :pref_secret, as: :boolean, boolean_style: :inline
-      = f.input :profile
+      = f.input :profile, :input_html => {:rows => 6}
+
+      = f.submit '更新', class: 'btn btn-warning'
 
   .col-md-3
     = render 'widget'

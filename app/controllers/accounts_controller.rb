@@ -1,28 +1,42 @@
 class AccountsController < ApplicationController
-  before_action :set_user, only: %i(edit photo password email withdraw)
+  before_action :authenticate_user!
+  before_action :set_user, except: %i(show)
 
   def show
+    # TODO
   end
 
   def edit
   end
 
   def update
-  end
-
-  def withdraw
+    if @user.update(user_params)
+      redirect_to accounts_path, notice: 'ユーザ情報を更新しました'
+    else
+      render :edit
+    end
   end
 
   def photo
+    # TODO
   end
 
   def password
   end
 
   def update_password
+    if current_user.update_with_password(user_params)
+      sign_in(current_user, bypass: true)
+      redirect_to accounts_path, notice: 'パスワードを更新しました'
+    else
+      render :password
+    end
   end
 
   def email
+  end
+
+  def withdraw
   end
 
   private
@@ -31,10 +45,9 @@ class AccountsController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:password, :password_confirm)
-    end
-
-    def password_params
-      params.require(:user).permit(:current_password, :password, :password_confirm)
+      params.require(:user).permit(
+        :name, :nickname, :sex, :sex_secret, :birthday, :birthday_secret, :email,
+        :pref, :pref_secret, :profile, :current_password, :password, :password_confirmation
+      )
     end
 end
