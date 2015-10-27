@@ -9,6 +9,15 @@ Rails.application.routes.draw do
     get 'withdraw'
   end
 
+  resources :users, only: %i(show) do
+    member do
+      get 'bokes'
+      get 'themes'
+      get 'favorites'
+      get 'ratings'
+    end
+  end
+
   resources :themes
 
   resources :bokes, except: %i(new edit update destroy) do
