@@ -1,0 +1,35 @@
+%nav.navbar.navbar-fixed-top
+  .container
+    .navbar-header
+      %button.navbar-toggle.collapsed{type: "button", 'data-toggle': "collapse", 'data-target': "#navbar",
+        'aria-expanded': false, 'aria-controls': "navbar"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      #logo.navbar-brand
+        = link_to 'bokete', root_path
+    #navbar.collapse.navbar-collapse
+      %ul.nav.navbar-nav.navbar-left
+        %li
+          = link_to 'ボケ', bokes_path(tab: 'hot')
+        %li
+          = link_to 'お題', themes_path
+        %li
+          = link_to '職人', '#'
+      %ul.nav.navbar-nav.navbar-right
+        - if user_signed_in?
+          %li
+            = link_to member_path(current_user) do
+              - if current_user.avatar.url
+                = image_tag(current_user.avatar.url, {class: 'user-icon-top-bar img-circle'})
+              - else
+                = image_tag('no-image.jpg', {class: 'user-icon-top-bar img-circle'})
+              = current_user.try(:name)
+          %li
+            = link_to 'マイページ', accounts_path
+        - else
+          %li
+            = link_to '新規登録', new_registration_path('user')
+          %li
+            = link_to 'ログイン', user_session_path

@@ -1,0 +1,11 @@
+%ul.nav.nav-tabs
+  %li{class: action_name == 'show' ? 'active' : ''}
+    = link_to 'プロフィール', member_path
+  %li{class: action_name == 'bokes' ? 'active' : ''}
+    = link_to '投稿ボケ', bokes_member_path(@user)
+  %li{class: action_name == 'themes' ? 'active' : ''}
+    = link_to '投稿お題', themes_member_path(@user)
+  %li{class: action_name == 'favorites' ? 'active' : ''}
+    = link_to 'お気に入り職人', favorites_member_path(@user)
+  %li{class: action_name == 'ratings' ? 'active' : ''}
+    = link_to 'ボケコレ', ratings_member_path(@user)

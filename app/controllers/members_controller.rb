@@ -1,4 +1,6 @@
 class MembersController < ApplicationController
+  before_action :set_user
+
   def show
   end
 
@@ -13,4 +15,9 @@ class MembersController < ApplicationController
 
   def ratings
   end
+
+  private
+    def set_user
+      @user = User.find(params[:id])
+    end
 end

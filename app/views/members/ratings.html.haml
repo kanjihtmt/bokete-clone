@@ -1,2 +1,11 @@
-%h1 Users#ratings
-%p Find me in app/views/users/ratings.html.haml
+- breadcrumb :accounts
+
+.row
+  .col-md-9
+    = render 'tabs'
+
+    .wrapper
+      %h2= "#{@user.nickname}さんのボケコレクション"
+
+  .col-md-3.no-padding
+    = render 'widget'

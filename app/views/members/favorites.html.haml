@@ -1,2 +1,11 @@
-%h1 Users#favorites
-%p Find me in app/views/users/favorites.html.haml
+- breadcrumb :accounts
+
+.row
+  .col-md-9
+    = render 'tabs'
+
+    .wrapper
+      %h2= "#{@user.nickname}さんのお気に入り職人"
+
+  .col-md-3.no-padding
+    = render 'widget'

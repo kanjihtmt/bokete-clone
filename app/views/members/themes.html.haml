@@ -1,2 +1,11 @@
-%h1 Users#themes
-%p Find me in app/views/users/themes.html.haml
+- breadcrumb :accounts
+
+.row
+  .col-md-9
+    = render 'tabs'
+
+    .wrapper
+      %h2= "#{@user.nickname}さんの投稿したお題"
+
+  .col-md-3.no-padding
+    = render 'widget'

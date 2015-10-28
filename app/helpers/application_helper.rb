@@ -15,4 +15,8 @@ module ApplicationHelper
         :top
     end
   end
+
+  def display_sex(sex)
+    sex == 1 ? '男性' : '女性'
+  end
 end

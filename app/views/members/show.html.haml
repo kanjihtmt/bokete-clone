@@ -5,6 +5,98 @@
     = render 'tabs'
 
     .wrapper
+      .row.profile
+        .col-sm-4.col-xs-12
+          .avatar
+            - if @user.avatar.url
+              = image_tag(@user.avatar.url, {class: 'img-circle'})
+            - else
+              = image_tag('no-image.jpg', {class: 'img-circle'})
+        .col-sm-8.col-xs-12
+          .detail
+            %h3= "#{@user.nickname}さんのページ"
+            %table.table
+              %tr
+                %th
+                  %i.fa.fa-check
+                  ボケてID
+                %td= @user.name
+              %tr
+                %th
+                  %i.fa.fa-user
+                  性別
+                %td= display_sex(@user.sex)
+              %tr
+                %th
+                  %i.fa.fa-star
+                  星の合計
+                %td
+              %tr
+                %th
+                  %i.fa.fa-comment
+                  ボケの投稿数
+                %td
+              %tr
+                %th
+                  %i.fa.fa-picture-o
+                  お題投稿数
+                %td
+              %tr
+                %th
+                  %i.fa.fa-pencil
+                  プロフィール
+                %td= simple_format @user.profile
+
+      .row.profile-boke
+        %h2= "#{@user.nickname}さんの投稿したボケ"
+        - 1.step(6) do |i|
+          .boke-horizon.col-md-4
+            %a.photo{href: "/boke/36699959"}
+              %img{src: "//d2dcan0armyq93.cloudfront.net/photo/odai/600/d706a89dadfe97fdac87ef9dfb866273_600.jpg"}
+            .photo-meta
+              %a{href: "/user/Yuki1984"}
+                %span.fa.fa-camera{title: "photo by"}
+                  ユキ
+              %a{href: "/user/Yuki1984"}
+                %span.fa.fa-picture-o{title: "oday by"}
+                  ユキ
+            .text ーとなんじゃねーの？どんだけ暇だよ
+            .rating
+              %a{href: "/boke/36699959"}
+                %i.fa.fa-star.fa-lg
+                &nbsp;
+                %b 1,357
+          - if i % 3  == 0
+            .clear
+
+        .text-right
+          = link_to "#{@user.nickname}さんのボケをもっとみる", bokes_member_path
+
+      .row.profile-boke
+        %h2= "#{@user.nickname}さんが最近評価したボケ"
+
+        - 1.step(6) do |i|
+          .boke-horizon.col-md-4
+            %a.photo{href: "/boke/36699959"}
+              %img{src: "//d2dcan0armyq93.cloudfront.net/photo/odai/600/d706a89dadfe97fdac87ef9dfb866273_600.jpg"}
+            .photo-meta
+              %a{href: "/user/Yuki1984"}
+                %span.fa.fa-camera{title: "photo by"}
+                  ユキ
+              %a{href: "/user/Yuki1984"}
+                %span.fa.fa-picture-o{title: "oday by"}
+                  ユキ
+            .text ーとなんじゃねーの？どんだけ暇だよ
+            .rating
+              %a{href: "/boke/36699959"}
+                %i.fa.fa-star.fa-lg
+                &nbsp;
+                %b 1,357
+          - if i % 3  == 0
+            .clear
+
+        .text-right
+          = link_to "#{@user.nickname}さんの評価したボケをもっとみる", ratings_member_path
 
   .col-md-3.no-padding
     = render 'widget'
