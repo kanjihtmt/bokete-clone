@@ -7,5 +7,31 @@
     .wrapper
       %h2= "#{@user.nickname}さんの投稿したボケ"
 
+      .boke
+        .boke-photo
+          .boke-photo-content
+            %a{href: "/odai/1714604"}
+              %img{src: "//d2dcan0armyq93.cloudfront.net/photo/odai/600/0b7bd42def3aa49e7846d38f2b795f0f_600.jpg"}
+            .boke-photo-meta
+              %a
+                %span.fa.fa-camera{title: 'photo by'} おらんゆうたん
+              &nbsp;
+              %a
+                %span.fa.fa-picture-o{title: 'odai by'} おらんゆうたん
+
+        %h3{class: "boke-text"} こ／やめとこうよ、何かヤバイって！
+
+        .boke-meta.clearfix
+          .boke-information
+            .boke-information-row
+              .boke-stars
+                %a{href: "/boke/36625240", target: "_self"}
+                  %i.fa.fa-star{style: "color:#ebbf2a;"}
+                  9,015
+              .boke-information-label
+                %a{href: "/boke/36625240", target: "_self"} 2日くらい前
+            .boke-information-row
+              .boke-rate
+
   .col-md-3.no-padding
     = render 'widget'
