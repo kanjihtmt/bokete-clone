@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     get 'withdraw'
   end
 
-  resources :users, only: %i(show) do
+  resources :members, only: %i(show) do
     member do
       get 'bokes'
       get 'themes'
