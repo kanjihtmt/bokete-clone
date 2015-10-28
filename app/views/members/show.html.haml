@@ -21,11 +21,12 @@
                   %i.fa.fa-check
                   ボケてID
                 %td= @user.name
-              %tr
-                %th
-                  %i.fa.fa-user
-                  性別
-                %td= display_sex(@user.sex)
+              - unless @user.sex_secret
+                %tr
+                  %th
+                    %i.fa.fa-user
+                    性別
+                  %td= display_sex(@user.sex)
               %tr
                 %th
                   %i.fa.fa-star

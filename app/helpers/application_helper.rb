@@ -16,7 +16,14 @@ module ApplicationHelper
     end
   end
 
-  def display_sex(sex)
-    sex == 1 ? '男性' : '女性'
+  def display_sex(sex = 0)
+    case sex
+      when 1
+        '男性'
+      when 2
+        '女性'
+      else
+        ''
+    end
   end
 end
