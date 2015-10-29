@@ -7,5 +7,16 @@
     .wrapper
       %h2= "#{@user.nickname}さんのお気に入り職人"
 
+      .users.row
+        - 1.step(10) do |i|
+          .col-sm-3.user-content
+            = link_to '#' do
+              = image_tag '//d3pb2x7032n52.cloudfront.net/static/images/user_img.gif',
+                {class: 'img-circle user-icon-middle'}
+            = link_to '#' do
+              %span 新快速JP
+          - if i % 4 == 0
+            .clear
+
   .col-md-3.no-padding
     = render 'widget'
