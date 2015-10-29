@@ -22,16 +22,15 @@
         %h3{class: "boke-text"} こ／やめとこうよ、何かヤバイって！
 
         .boke-meta.clearfix
-          .boke-information
-            .boke-information-row
-              .boke-stars
-                %a{href: "/boke/36625240", target: "_self"}
-                  %i.fa.fa-star{style: "color:#ebbf2a;"}
-                  9,015
-              .boke-information-label
-                %a{href: "/boke/36625240", target: "_self"} 2日くらい前
-            .boke-information-row
-              .boke-rate
+          .boke-information-row.clearfix
+            .boke-stars
+              %a{href: "/boke/36625240", target: "_self"}
+                %i.fa.fa-star{style: "color:#ebbf2a;"}
+                9,015
+            .boke-information-label
+              %a{href: "/boke/36625240", target: "_self"} 2日くらい前
+          .boke-information-row
+            .boke-rate
 
   .col-md-3.no-padding
     = render 'widget'
