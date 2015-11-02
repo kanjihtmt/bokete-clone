@@ -24,6 +24,7 @@ gem 'gretel'
 gem 'rails-i18n'
 gem 'carrierwave'
 gem 'rmagick', require: 'RMagick'
+gem 'masonry-rails'
 
 group :development do
   gem 'better_errors'
