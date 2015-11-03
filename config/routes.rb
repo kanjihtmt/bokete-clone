@@ -21,8 +21,11 @@ Rails.application.routes.draw do
   resources :themes, except: %i(new edit update destroy) do
     collection do
       get 'upload'
-      post 'build'
-      post 'preview'
+      match 'build', via: [:get, :post]
+      match 'preview', via: [:get, :post]
+    end
+    member do
+      get 'build'
     end
   end
 

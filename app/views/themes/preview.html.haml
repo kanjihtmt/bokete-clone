@@ -9,19 +9,26 @@
 
         %hr
 
-        タイトル:
-        = @theme.title
-        カテゴリー:
-        = @theme.category.name
-        タグ:
-        = @theme.tag
+        %dl.dl-horizontal.preview
+          %dt
+            %b タイトル
+          %dd
+            %i.fa.fa-hand-o-right
+            = @theme.title
+          %dt
+            %b カテゴリー
+          %dd
+            %i.fa.fa-hand-o-right
+            = @theme.category.name
+          %dt
+            %b タグ
+          %dd
+            - if @theme.tag.present?
+              %i.fa.fa-hand-o-right
+              = "[#{@theme.tag}]"
 
         = simple_form_for @theme, url: themes_path, method: :post do |f|
-          = f.hidden_field :image
-          = f.hidden_field :image_cache
-          = f.hidden_field :title
-          = f.hidden_field :tag
-          = f.hidden_field :category
+          = f.input :id, as: :hidden
 
           .alert.alert-danger
             %ul
@@ -29,6 +36,7 @@
                 %span.fa.fa-warning
                 著作権・肖像権の侵害に当たる画像や暴力的、卑猥な画像の投稿は禁止しております。
           .text-center
+            = link_to '戻る', build_theme_path(@theme), class: 'btn btn-default'
             = f.submit '投稿する', class: 'btn btn-warning'
 
   .col-md-4

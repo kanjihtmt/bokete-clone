@@ -11,12 +11,11 @@
 
       .new-theme-input-forms
         = simple_form_for @theme, url: preview_themes_path, method: :post do |f|
+          = f.hidden_field :id
           = f.input :title
           = f.input :tag
           = f.association :category, as: :radio_buttons, collection: Category.where(category_type: 0),
               item_wrapper_class: 'radio-inline'
-          = f.file_field :image
-          = f.hidden_field :image_cache
 
           .alert.alert-danger
             %ul

@@ -1,4 +1,7 @@
 class Theme < ActiveRecord::Base
+  VALID = 1.freeze
+  INVALID = 0.freeze
+
   belongs_to :category
   has_many :bokes
 

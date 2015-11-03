@@ -13,25 +13,30 @@ class ThemesController < ApplicationController
   end
 
   def build
-    raise ActionController::RoutingError, '正しいページ遷移ではありません' unless valid_prev_action?(['upload', 'preview'])
-    @theme = session[:theme] = Theme.new(theme_params)
+    raise ActionController::RoutingError, '正しいページ遷移ではありません' unless valid_prev_action?(['upload', 'build', 'preview'])
+    if request.get?
+      @theme = Theme.find(params[:id])
+    else
+      @theme = Theme.new(theme_params)
+      unless @theme.save(validate: false)
+        render :upload
+      end
+    end
   end
 
   def preview
-    #raise ActionController::RoutingError, '正しいページ遷移ではありません' unless valid_prev_action?('new')
-    @theme = session[:theme] = Theme.new(theme_params)
-
-    unless @theme.valid?
-      render :build
-    else
-      render action: :preview
+    raise ActionController::RoutingError, '正しいページ遷移ではありません' unless valid_prev_action?(['build', 'preview'])
+    @theme = Theme.find(theme_params[:id])
+    @theme.assign_attributes(theme_params)
+    unless  @theme.save
+      render :build, id: @theme.id
     end
   end
 
   def create
-    @theme = Theme.new(session[:theme])
+    @theme = Theme.find(theme_params[:id])
+    @theme.status = Theme::VALID
     if @theme.save
-      session.delete(:theme)
       redirect_to themes_path, notice: 'お題を作成しました。'
     else
       redirect_to upload_themes_path, notice: 'お題の登録に失敗しました。'
@@ -54,6 +59,6 @@ class ThemesController < ApplicationController
     end
 
     def theme_params
-      params.require(:theme).permit(:title, :tag, :category_id, :image)
+      params.require(:theme).permit(:id, :title, :tag, :category_id, :image, :status)
     end
 end
