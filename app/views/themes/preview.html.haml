@@ -1,0 +1,35 @@
+.row
+  .col-md-8
+    = render 'theme_tabs'
+    .wrapper.theme
+      %h2 お題の確認
+
+      .new-theme-photo.text-center
+        = image_tag @theme.image_url
+
+        %hr
+
+        タイトル:
+        = @theme.title
+        カテゴリー:
+        = @theme.category.name
+        タグ:
+        = @theme.tag
+
+        = simple_form_for @theme, url: themes_path, method: :post do |f|
+          = f.hidden_field :image
+          = f.hidden_field :image_cache
+          = f.hidden_field :title
+          = f.hidden_field :tag
+          = f.hidden_field :category
+
+          .alert.alert-danger
+            %ul
+              %li.list-unstyled
+                %span.fa.fa-warning
+                著作権・肖像権の侵害に当たる画像や暴力的、卑猥な画像の投稿は禁止しております。
+          .text-center
+            = f.submit '投稿する', class: 'btn btn-warning'
+
+  .col-md-4
+    = render 'widget'

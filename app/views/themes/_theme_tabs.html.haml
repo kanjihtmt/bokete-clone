@@ -1,9 +1,12 @@
 %ul.nav.nav-tabs
-  %li{class: !params[:tab].present? ? 'active' : ''}
-    = link_to '新着', bokes_path
+  %li{class: !params[:tab].present? && action_name == 'index' ? 'active' : ''}
+    = link_to '新着', themes_path
   %li{class: params[:tab] == 'hot' ? 'active' : ''}
-    = link_to '注目', bokes_path(tab: 'hot')
+    = link_to '注目', themes_path(tab: 'hot')
   %li{class: params[:tab] == 'popular' ? 'active' : ''}
-    = link_to '人気', bokes_path(tab: 'popular')
-  %li
-    = link_to 'お題投稿', bokes_path
+    = link_to '人気', themes_path(tab: 'popular')
+  %li{class: action_name == 'new' ? 'active' : ''}
+    = link_to upload_themes_path do
+      %span.fa.fa-upload
+      お題投稿
+

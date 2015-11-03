@@ -1,5 +1,5 @@
 class ThemesController < ApplicationController
-  before_action :set_theme, only: [:show, :edit, :update, :destroy]
+  before_action :set_theme, only: %i(show)
 
   def index
     @themes = Theme.all
@@ -8,41 +8,52 @@ class ThemesController < ApplicationController
   def show
   end
 
-  def new
+  def upload
     @theme = Theme.new
   end
 
-  def edit
+  def build
+    raise ActionController::RoutingError, '正しいページ遷移ではありません' unless valid_prev_action?(['upload', 'preview'])
+    @theme = session[:theme] = Theme.new(theme_params)
+  end
+
+  def preview
+    #raise ActionController::RoutingError, '正しいページ遷移ではありません' unless valid_prev_action?('new')
+    @theme = session[:theme] = Theme.new(theme_params)
+
+    unless @theme.valid?
+      render :build
+    else
+      render action: :preview
+    end
   end
 
   def create
-    @theme = Theme.new(theme_params)
+    @theme = Theme.new(session[:theme])
     if @theme.save
-      redirect_to @theme, notice: 'お題を作成しました。'
+      session.delete(:theme)
+      redirect_to themes_path, notice: 'お題を作成しました。'
     else
-      render :new
+      redirect_to upload_themes_path, notice: 'お題の登録に失敗しました。'
     end
-  end
-
-  def update
-    if @theme.update(theme_params)
-      redirect_to @theme, notice: 'お題を更新しました。'
-    else
-      render :edit
-    end
-  end
-
-  def destroy
-    @theme.destroy
-    redirect_to themes_url, notice: 'お題を削除しました。'
   end
 
   private
+    def valid_prev_action?(action_name)
+      prev = Rails.application.routes.recognize_path(request.referrer)
+      if action_name.instance_of?(Array)
+        action_name.each do |action|
+          return true if prev[:controller] == controller_name && prev[:action] == action
+        end
+      end
+      prev[:controller] == controller_name && prev[:action] == action_name
+    end
+
     def set_theme
       @theme = Theme.find(params[:id])
     end
 
     def theme_params
-      params[:theme]
+      params.require(:theme).permit(:title, :tag, :category_id, :image)
     end
 end

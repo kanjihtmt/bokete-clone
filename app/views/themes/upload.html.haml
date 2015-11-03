@@ -1,0 +1,21 @@
+- breadcrumb breadcrumbs_for_bokes(params[:tab])
+
+.row
+  .col-md-8
+    = render 'theme_tabs'
+    .wrapper.theme
+      %h2
+        %i.fa.fa-picture-o
+        手持ちの写真からお題を投稿する
+
+      .gray-box
+        .preview
+          %img#previewImg{src: '', style: 'display:none'}
+
+        = simple_form_for @theme, url: build_themes_path, method: :post do |f|
+          %a.btn.btn-default.pickup-file ファイルを選択
+          = f.input :image, label: false
+          = f.submit 'アップロード', class: 'btn btn-warning'
+
+  .col-md-4
+    = render 'widget'

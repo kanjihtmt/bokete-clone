@@ -1,0 +1,32 @@
+- breadcrumb breadcrumbs_for_bokes(params[:tab])
+
+.row
+  .col-md-8
+    = render 'theme_tabs'
+    .wrapper.theme
+      %h2 お題の投稿
+
+      .new-theme-photo.text-center
+        = image_tag @theme.image_url
+
+      .new-theme-input-forms
+        = simple_form_for @theme, url: preview_themes_path, method: :post do |f|
+          = f.input :title
+          = f.input :tag
+          = f.association :category, as: :radio_buttons, collection: Category.where(category_type: 0),
+              item_wrapper_class: 'radio-inline'
+          = f.file_field :image
+          = f.hidden_field :image_cache
+
+          .alert.alert-danger
+            %ul
+              %li.list-unstyled
+                %span.fa.fa-warning
+                著作権・肖像権の侵害に当たる画像や暴力的、卑猥な画像の投稿は禁止しております。
+                %br
+                詳しくは利用規約をご覧ください。
+          .text-center
+            = f.submit '確認画面へ', class: 'btn btn-warning'
+
+  .col-md-4
+    = render 'widget'

@@ -18,7 +18,13 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :themes
+  resources :themes, except: %i(new edit update destroy) do
+    collection do
+      get 'upload'
+      post 'build'
+      post 'preview'
+    end
+  end
 
   resources :bokes, except: %i(new edit update destroy) do
     get ':theme_id/new' => 'bokes#new', on: :collection

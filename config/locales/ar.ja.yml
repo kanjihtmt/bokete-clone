@@ -3,6 +3,7 @@ ja:
     models:
       user: ユーザ
       boke: ボケ
+      theme: お題
     attributes:
       user:
         name: ボケてアカウント
@@ -16,5 +17,9 @@ ja:
         profile: プロフィール
       boke:
         text: ボケテキスト
+        tag: タグ
+        category: カテゴリ
+      theme:
+        title: タイトル
         tag: タグ
         category: カテゴリ
