@@ -5,59 +5,22 @@
     = render 'theme_tabs'
     .wrapper.clearfix
       #masonry-container.theme
-        .mas-box.pin.clearfix
-          .theme-inner
-            %h3
-              %a{href: '#'} 5 個のボケ
-            .theme-photo-wrapper
-              %a.theme-photo{href: '#'}
-                = image_tag "//d2dcan0armyq93.cloudfront.net/photo/odai/600/b58aff5d35350781983e4a60d814a62c_600.jpg"
-            .theme-meta
-              %a{href: '#'}
-                %i.fa.fa-camera{title: 'photo by'} RogerGoun
-              &nbsp;
-              %a{href: "#"}
-                %i.fa.fa-picture-o{title: 'odai by'} ¥390
-
-        .mas-box.pin.clearfix
-          .theme-inner
-            %h3
-              %a{href: '#'} 2 個のボケ
-            .theme-photo-wrapper
-              %a.theme-photo{href: '#'}
-                = image_tag "//d2dcan0armyq93.cloudfront.net/photo/odai/600/6da1c718af364d15ce17fb2cc26b594a_600.jpg"
-            .theme-meta
-              %a{href: '#'}
-                %i.fa.fa-camera{title: 'photo by'} RogerGoun
-              &nbsp;
-              %a{href: "#"}
-                %i.fa.fa-picture-o{title: 'odai by'} ¥390
-        .mas-box.pin.clearfix
-          .theme-inner
-            %h3
-              %a{href: '#'} 6 個のボケ
-            .theme-photo-wrapper
-              %a.theme-photo{href: '#'}
-                = image_tag "//d2dcan0armyq93.cloudfront.net/photo/odai/600/fe4d501b2891e77709e78abce12c2914_600.jpg"
-            .theme-meta
-              %a{href: '#'}
-                %i.fa.fa-camera{title: 'photo by'} RogerGoun
-              &nbsp;
-              %a{href: "#"}
-                %i.fa.fa-picture-o{title: 'odai by'} ¥390
-        .mas-box.pin.clearfix
-          .theme-inner
-            %h3
-              %a{href: '#'} 4 個のボケ
-            .theme-photo-wrapper
-              %a.theme-photo{href: '#'}
-                = image_tag "//d2dcan0armyq93.cloudfront.net/photo/odai/600/dd0f4e6a3f05da294b1738cfa0ed0a01_600.jpg"
-            .theme-meta
-              %a{href: '#'}
-                %i.fa.fa-camera{title: 'photo by'} RogerGoun
-              &nbsp;
-              %a{href: "#"}
-                %i.fa.fa-picture-o{title: 'odai by'} ¥390
+        - @themes.each do |theme|
+          .mas-box.pin.clearfix
+            .theme-inner
+              %h3
+                = link_to '5 個のボケ', theme_path(theme)
+              .theme-photo-wrapper
+                = link_to "/bokes/#{theme.id}/new" do
+                  = image_tag theme.image_url
+              .theme-meta
+                = link_to member_path(theme.user) do
+                  %i.fa.fa-camera{title: 'photo by'}
+                  = theme.user.try(:nickname)
+                &nbsp;
+                = link_to member_path(theme.user) do
+                  %i.fa.fa-picture-o{title: 'odai by'}
+                  = theme.user.try(:nickname)
 
   .col-md-4
     = render 'widget'

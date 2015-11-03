@@ -3,6 +3,7 @@ class Theme < ActiveRecord::Base
   INVALID = 0.freeze
 
   belongs_to :category
+  belongs_to :user
   has_many :bokes
 
   mount_uploader :image, ImageUploader

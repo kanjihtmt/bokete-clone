@@ -2,7 +2,7 @@ class ThemesController < ApplicationController
   before_action :set_theme, only: %i(show)
 
   def index
-    @themes = Theme.all
+    @themes = Theme.where(status: Theme::VALID).page(params[:page])
   end
 
   def show

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151103065737) do
+ActiveRecord::Schema.define(version: 20151103214427) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,10 +23,12 @@ ActiveRecord::Schema.define(version: 20151103065737) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "theme_id"
+    t.integer  "user_id"
   end
 
   add_index "bokes", ["category_id"], name: "index_bokes_on_category_id", using: :btree
   add_index "bokes", ["theme_id"], name: "index_bokes_on_theme_id", using: :btree
+  add_index "bokes", ["user_id"], name: "index_bokes_on_user_id", using: :btree
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -59,9 +61,11 @@ ActiveRecord::Schema.define(version: 20151103065737) do
     t.datetime "updated_at",              null: false
     t.string   "image"
     t.integer  "status",      default: 0, null: false
+    t.integer  "user_id"
   end
 
   add_index "themes", ["category_id"], name: "index_themes_on_category_id", using: :btree
+  add_index "themes", ["user_id"], name: "index_themes_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
