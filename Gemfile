@@ -25,6 +25,7 @@ gem 'rails-i18n'
 gem 'carrierwave'
 gem 'rmagick', require: 'RMagick'
 gem 'masonry-rails'
+gem 'counter_culture', '~> 0.1.33'
 
 group :development do
   gem 'better_errors'

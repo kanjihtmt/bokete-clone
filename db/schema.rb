@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151103214427) do
+ActiveRecord::Schema.define(version: 20151104061644) do
 
   create_table "bokes", force: :cascade do |t|
     t.text     "text"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20151103214427) do
     t.string   "image"
     t.integer  "status",      default: 0, null: false
     t.integer  "user_id"
+    t.integer  "bokes_count", default: 0, null: false
   end
 
   add_index "themes", ["category_id"], name: "index_themes_on_category_id", using: :btree

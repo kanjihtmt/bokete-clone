@@ -11,7 +11,7 @@
           .mas-box.pin.clearfix
             .theme-inner
               %h3
-                = link_to '5 個のボケ', theme_path(theme)
+                = link_to "#{theme.bokes_count} 個のボケ", theme_path(theme)
               .theme-photo-wrapper
                 = link_to "/bokes/#{theme.id}/new" do
                   = image_tag theme.image_url, class: 'img-responsive'

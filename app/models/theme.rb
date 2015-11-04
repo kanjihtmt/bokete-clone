@@ -4,13 +4,12 @@ class Theme < ActiveRecord::Base
   HOT = 'hot'.freeze
   POPULAR = 'popular'.freeze
 
-  # TODO: boke登録機能を実装後にorder byをbokes_countの降順にすること
   scope :sort, ->(type) do
     case type
       when HOT
-        joins(:bokes).where("bokes.created_at >= ?", Time.current - 0.5.day).order('created_at desc')
+        joins(:bokes).where("bokes.created_at >= ?", Time.current - 0.5.day).order(bokes_count: :desc)
       when POPULAR
-        joins(:bokes).where("bokes.created_at >= ?", Time.current - 3.day).order('created_at desc')
+        joins(:bokes).where("bokes.created_at >= ?", Time.current - 3.day).order(bokes_count: :desc)
       else
         order(created_at: :desc)
     end
