@@ -2,7 +2,32 @@
 
 .row
   .col-md-8
-    .wrapper.clearfix
+    = render 'theme_tabs'
+    .wrapper.clearfix.theme
+      .show-theme.text-center
+        = link_to theme_path(@theme) do
+          = image_tag @theme.image_url
+        .theme-meta
+          = link_to member_path(@theme.user) do
+            %i.fa.fa-camera{title: 'photo by'}
+            = @theme.user.try(:nickname)
+          &nbsp;
+          = link_to member_path(@theme.user) do
+            %i.fa.fa-picture-o{title: 'odai by'}
+            = @theme.user.try(:nickname)
+
+        .clearfix.text-center
+          .information-label.btn
+            = link_to elapsed_time(@theme.created_at), theme_path(@theme)
+          .information-label.btn
+            = link_to @theme.category.name, themes_path(category: @theme.category)
+          .information-label.btn
+            = link_to "/bokes/#{@theme.id}/new" do
+              = "#{@theme.bokes_count} ボケ"
+        .text-center
+          = link_to "/bokes/#{@theme.id}/new", class: 'btn btn-warning' do
+            %i.fa.fa-pencil-square-o
+            このお題でボケる
 
   .col-md-4
     = render 'widget'
