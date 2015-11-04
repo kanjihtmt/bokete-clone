@@ -7,7 +7,7 @@
       %h2 お題の投稿
 
       .new-theme-photo.text-center
-        = image_tag @theme.image_url
+        = image_tag @theme.image_url, class: 'img-responsive'
 
       .new-theme-input-forms
         = simple_form_for @theme, url: preview_themes_path, method: :post do |f|

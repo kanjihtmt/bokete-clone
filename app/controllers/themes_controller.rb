@@ -1,8 +1,9 @@
 class ThemesController < ApplicationController
+  before_action :authenticate_user!, except: %i(index show)
   before_action :set_theme, only: %i(show)
 
   def index
-    @themes = Theme.where(status: Theme::VALID).page(params[:page])
+    @themes = Theme.where(status: Theme::VALID).sort(params[:tab]).category(params[:category]).page(params[:page])
   end
 
   def show
@@ -35,7 +36,7 @@ class ThemesController < ApplicationController
 
   def create
     @theme = Theme.find(theme_params[:id])
-    @theme.status = Theme::VALID
+    @theme.assign_attributes(status: Theme::VALID, user: current_user)
     if @theme.save
       redirect_to themes_path, notice: 'お題を作成しました。'
     else

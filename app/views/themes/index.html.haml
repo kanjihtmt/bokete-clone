@@ -4,6 +4,8 @@
   .col-md-8
     = render 'theme_tabs'
     .wrapper.clearfix
+      = render 'category_tab_menu'
+
       #masonry-container.theme
         - @themes.each do |theme|
           .mas-box.pin.clearfix
@@ -12,7 +14,7 @@
                 = link_to '5 個のボケ', theme_path(theme)
               .theme-photo-wrapper
                 = link_to "/bokes/#{theme.id}/new" do
-                  = image_tag theme.image_url
+                  = image_tag theme.image_url, class: 'img-responsive'
               .theme-meta
                 = link_to member_path(theme.user) do
                   %i.fa.fa-camera{title: 'photo by'}
@@ -22,6 +24,8 @@
                   %i.fa.fa-picture-o{title: 'odai by'}
                   = theme.user.try(:nickname)
 
+      .text-center
+        = paginate(@themes)
   .col-md-4
     = render 'widget'
 

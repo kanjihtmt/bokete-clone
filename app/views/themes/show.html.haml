@@ -1,6 +1,8 @@
-%p#notice= notice
+- breadcrumb breadcrumbs_for_bokes(params[:tab])
 
+.row
+  .col-md-8
+    .wrapper.clearfix
 
-= link_to 'Edit', edit_theme_path(@theme)
-\|
-= link_to 'Back', themes_path
+  .col-md-4
+    = render 'widget'
