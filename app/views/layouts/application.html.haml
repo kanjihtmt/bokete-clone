@@ -19,10 +19,12 @@
             %ul.list-inline
               %li
                 ボケ投稿数
-                %span.post-count 100件
+                %span.post-count= number_with_delimiter(Boke.count)
+                件
               %li
                 お題投稿数
-                %span.post-count 1,709,777件
+                %span.post-count= number_with_delimiter(Theme.where(status: 1).count)
+                件
       #contents
         .row.flash-message
           .col-md-12
