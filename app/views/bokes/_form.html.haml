@@ -1,9 +1,9 @@
 = simple_form_for(@boke) do |f|
   = f.error_notification
-
+  = f.input :theme_id, as: :hidden
   = f.input :text, as: :string
   = f.input :tag
-  = f.association :category, as: :radio_buttons, class: 'radio-inline'
+  = f.association :category, as: :radio_buttons, item_wrapper_class: 'radio-inline'
 
   .alert.alert-danger
     アダルトコンテンツ・下ねたを含むボケを投稿する場合はカテゴリーに「お下劣」を必ず指定してください

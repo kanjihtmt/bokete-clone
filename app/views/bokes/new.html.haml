@@ -9,14 +9,16 @@
       .boke
         .boke-photo
           .boke-photo-content
-            %a{href: "/odai/1714604"}
-              %img{src: "//d2dcan0armyq93.cloudfront.net/photo/odai/600/c788e2ae3ccee666374683a087fc6803_600.jpg"}
+            = link_to theme_path(@theme) do
+              = image_tag @theme.image_url
             .boke-photo-meta
-              %a
-                %span.fa.fa-camera{title: 'photo by'} photo by 少林
+              = link_to member_path(@theme.user) do
+                %span.fa.fa-camera{title: 'photo by'}
+                = "photo by #{@theme.user.try(:nickname)}"
               &nbsp;
-              %a
-                %span.fa.fa-picture-o{title: 'odai by'} odai by 少林
+              = link_to member_path(@theme.user) do
+                %span.fa.fa-picture-o{title: 'odai by'}
+                = "odai by #{@theme.user.try(:nickname)}"
 
       .new-boke-form
         = render 'form'

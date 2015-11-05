@@ -13,19 +13,18 @@ class BokesController < ApplicationController
   end
 
   def create
-    @boke = @themes.bokes.build(boke_params)
+    @boke = @theme.bokes.build(boke_params)
 
     if @boke.save
-      redirect_to @boke, notice: 'ボケを作成しました。'
+      redirect_to bokes_path, notice: 'ボケを作成しました。'
     else
-      render :new
+      render :new, theme_id: @theme
     end
   end
 
   private
     def set_theme
-      #@theme = Theme.find(params[:theme_id])
-      @theme = Theme.new
+      @theme = Theme.find(params[:theme_id] ? params[:theme_id] : params[:boke][:theme_id])
     end
 
     def boke_params
