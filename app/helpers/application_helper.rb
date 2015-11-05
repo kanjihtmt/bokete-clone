@@ -30,11 +30,15 @@ module ApplicationHelper
   def elapsed_time(time = nil)
     return '' if time.nil?
 
-    diff = (Time.current - time) / (60 * 60)
-    if diff > 24
-      "約#{diff / 24}日前"
+    diff = Time.current - time
+    if diff > 24.hour
+      "#{(diff / 1.day).round}日前"
+    elsif diff > 1.hour
+      "#{(diff / 1.hour).round}時間くらい前"
+    elsif diff > 1.minute
+      "#{(diff / 1.minute).round}分くらい前"
     else
-      "#{diff.round}時間くらい前"
+      "#{diff.round}秒くらい前"
     end
   end
 end
