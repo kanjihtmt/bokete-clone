@@ -6,58 +6,38 @@
     .wrapper
       = render 'bokes/category_tab_menu'
 
-      - 5.times do
+      - @bokes.each do |boke|
         .boke
           .boke-photo
             .boke-photo-content
-              %a{href: "/odai/1714604"}
-                %img{src: "//d2dcan0armyq93.cloudfront.net/photo/odai/600/0b7bd42def3aa49e7846d38f2b795f0f_600.jpg"}
+              = link_to boke_path(boke) do
+                = image_tag boke.theme.image_url
               .boke-photo-meta
-                %a
-                  %span.fa.fa-camera{title: 'photo by'} photo by おらんゆうたん
+                = link_to member_path(boke.theme.user) do
+                  %span.fa.fa-camera{title: 'photo by'}
+                  = "photo by #{boke.theme.user.try(:nickname)}"
                 &nbsp;
-                %a
-                  %span.fa.fa-picture-o{title: 'odai by'} odai by おらんゆうたん
+                = link_to member_path(boke.theme.user) do
+                  %span.fa.fa-picture-o{title: 'odai by'}
+                  = "odai by #{boke.theme.user.try(:nickname)}"
+                  %span.fa.fa-camera{title: 'photo by'}
 
-          %h3{class: "boke-text"} こ／やめとこうよ、何かヤバイって！
+          %h3.boke-text= boke.text
 
           .boke-meta.clearfix
             .boke-information
               .boke-information-row
                 .boke-stars
-                  %a{href: "/boke/36625240", target: "_self"}
+                  = link_to boke_path(boke), target: "_self" do
                     %i.fa.fa-star{style: "color:#ebbf2a;"}
-                    9,015
+                    = number_with_delimiter(boke.ratings_count)
                 .boke-information-label
-                  %a{href: "/boke/36625240", target: "_self"} 2日くらい前
+                  = link_to elapsed_time(boke.created_at), boke_path(boke), target: "_self"
               .boke-information-row
                 .boke-rate
 
-        .boke
-          .boke-photo
-            .boke-photo-content
-              %a{href: "/odai/1714604"}
-                %img{src: "//d2dcan0armyq93.cloudfront.net/photo/odai/600/c788e2ae3ccee666374683a087fc6803_600.jpg"}
-              .boke-photo-meta
-                %a
-                  %span.fa.fa-camera{title: 'photo by'} photo by 少林
-                &nbsp;
-                %a
-                  %span.fa.fa-picture-o{title: 'odai by'} odai by 少林
+      .text-center
+        = paginate(@bokes)
 
-          %h3{class: "boke-text"} 北風「これから勝負をしようではないか」太陽「不戦勝でいいから全力で行け」
-
-          .boke-meta.clearfix
-            .boke-information
-              .boke-information-row
-                .boke-stars
-                  %a{href: "/boke/36625240", target: "_self"}
-                    %i.fa.fa-star{style: "color:#ebbf2a;"}
-                    9,015
-                .boke-information-label
-                  %a{href: "/boke/36625240", target: "_self"} 2日くらい前
-              .boke-information-row
-                .boke-rate
   .col-md-4
     = render 'widget'
-

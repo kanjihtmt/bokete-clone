@@ -1,8 +1,9 @@
 class BokesController < ApplicationController
-  before_action :set_theme, except: %i(index)
+  before_action :set_theme, except: %i(index show)
+  before_action :set_boke, only: %i(show)
 
   def index
-    @bokes = Boke.all
+    @bokes = Boke.all.page(params[:page])
   end
 
   def show
@@ -25,6 +26,10 @@ class BokesController < ApplicationController
   private
     def set_theme
       @theme = Theme.find(params[:theme_id] ? params[:theme_id] : params[:boke][:theme_id])
+    end
+
+    def set_boke
+      @boke = Boke.find(params[:id])
     end
 
     def boke_params

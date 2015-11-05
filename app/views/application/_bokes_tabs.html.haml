@@ -3,7 +3,7 @@
     %li{class: !params[:tab].present? ? 'active' : ''}
       = link_to 'トップ', root_path
   - else
-    %li{class: !params[:tab].present? ? 'active' : ''}
+    %li{class: action_name == 'show' || params[:tab].present? ? '' : 'active'}
       = link_to '新着', bokes_path
   %li{class: params[:tab] == 'hot' ? 'active' : ''}
     = link_to '注目', bokes_path(tab: 'hot')
