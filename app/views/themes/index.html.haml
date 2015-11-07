@@ -4,7 +4,7 @@
   .col-md-8
     = render 'theme_tabs'
     .wrapper.clearfix.theme
-      = render 'category_tab_menu'
+      = render partial: 'category_tab_menu', locals: { category_type: 'theme' }
 
       #masonry-container.theme
         - @themes.each do |theme|

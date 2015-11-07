@@ -4,7 +4,7 @@
   .col-md-8
     = render 'bokes_tabs'
     .wrapper
-      = render 'bokes/category_tab_menu'
+      = render partial: 'category_tab_menu', locals: { category_type: :boke }
 
       - @bokes.each do |boke|
         .boke

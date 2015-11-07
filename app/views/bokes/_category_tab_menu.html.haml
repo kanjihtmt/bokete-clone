@@ -1,7 +1,0 @@
-.text-center
-  .btn-group.list-inline.category-tab-menu
-    %li.btn{class: !params[:category].present? ? 'active' : ''}
-      = link_to '全カテゴリ'
-    - Category.boke.each do |category|
-      %li.btn{class: category.id.to_s == params[:category] ? 'active' : ''}
-        = link_to category.name, bokes_path(tab: params[:tab], category: category.id)
