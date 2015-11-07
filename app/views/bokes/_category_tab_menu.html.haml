@@ -1,18 +1,7 @@
 .text-center
-  %div.btn-group.list-inline.category-tab-menu
-    %li.btn.active
+  .btn-group.list-inline.category-tab-menu
+    %li.btn{class: !params[:category].present? ? 'active' : ''}
       = link_to '全カテゴリ'
-    %li.btn
-      = link_to 'バカ'
-    %li.btn
-      = link_to 'シュール'
-    %li.btn
-      = link_to 'お下劣'
-    %li.btn
-      = link_to 'ブラック'
-    %li.btn
-      = link_to '身内'
-    %li.btn
-      = link_to '例え'
-    %li.btn
-      = link_to 'その他'
+    - Category.boke.each do |category|
+      %li.btn{class: category.id.to_s == params[:category] ? 'active' : ''}
+        = link_to category.name, bokes_path(tab: params[:tab], category: category.id)

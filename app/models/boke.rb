@@ -1,5 +1,5 @@
 class Boke < ActiveRecord::Base
-  belongs_to :category, -> { where category_type: Category::BOKE }
+  belongs_to :category, -> { Category.boke }
   belongs_to :user
   belongs_to :theme
   counter_culture :theme

@@ -19,7 +19,7 @@ class Theme < ActiveRecord::Base
     where(category: id) if id
   end
 
-  belongs_to :category
+  belongs_to :category, -> { Category.theme }
   belongs_to :user
   has_many :bokes
 

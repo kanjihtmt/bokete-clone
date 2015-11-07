@@ -1,7 +1,6 @@
 class Category < ActiveRecord::Base
-  THEME = 0.freeze
-  BOKE = 1.freeze
+  enum category_type: %i(theme boke)
 
-  has_many :themes, -> { where category_type: THEME }
-  has_many :bokes, -> { where category_type: BOKE }
+  has_many :themes
+  has_many :bokes
 end
