@@ -1,4 +1,6 @@
 class Theme < ActiveRecord::Base
+  include CategoryScope
+
   VALID = 1.freeze
   INVALID = 0.freeze
   HOT = 'hot'.freeze
@@ -13,10 +15,6 @@ class Theme < ActiveRecord::Base
       else
         order(created_at: :desc)
     end
-  end
-
-  scope :category, ->(id) do
-    where(category: id) if id
   end
 
   belongs_to :category, -> { Category.theme }

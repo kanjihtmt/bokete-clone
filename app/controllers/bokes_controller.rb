@@ -3,7 +3,7 @@ class BokesController < ApplicationController
   before_action :set_boke, only: %i(show)
 
   def index
-    @bokes = Boke.all.page(params[:page])
+    @bokes = Boke.sort(params[:tab]).category(params[:category]).page(params[:page])
   end
 
   def show
