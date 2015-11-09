@@ -11,7 +11,5 @@
     = link_to '人気', bokes_path(tab: 'popular')
   %li{class: params[:tab] == 'pickup' ? 'active' : ''}
     = link_to 'ピックアップ', bokes_path(tab: 'pickup')
-  %li{class: params[:tab] == 'select' ? 'active' : ''}
-    = link_to 'セレクト', bokes_path(tab: 'select')
   %li{class: params[:tab] == 'legend' ? 'active' : ''}
     = link_to '殿堂入り', bokes_path(tab: 'legend')
