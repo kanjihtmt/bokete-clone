@@ -52,12 +52,12 @@ RSpec.describe BokesController, type: :controller do
     end
   end
 
-  describe "GET #new" do
-    it "assigns a new boke as @boke" do
-      get :new, {}, valid_session
-      expect(assigns(:boke)).to be_a_new(Boke)
-    end
-  end
+  #describe "GET #new" do
+  #  it "assigns a new boke as @boke" do
+  #    get :new, {}, valid_session
+  #    expect(assigns(:boke)).to be_a_new(Boke)
+  #  end
+  #end
 
   describe "GET #edit" do
     it "assigns the requested boke as @boke" do

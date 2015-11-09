@@ -52,12 +52,12 @@ RSpec.describe ThemesController, type: :controller do
     end
   end
 
-  describe "GET #new" do
-    it "assigns a new theme as @theme" do
-      get :new, {}, valid_session
-      expect(assigns(:theme)).to be_a_new(Theme)
-    end
-  end
+  #describe "GET #new" do
+  #  it "assigns a new theme as @theme" do
+  #    get :new, {}, valid_session
+  #    expect(assigns(:theme)).to be_a_new(Theme)
+  #  end
+  #end
 
   describe "GET #edit" do
     it "assigns the requested theme as @theme" do
