@@ -18,36 +18,39 @@
             %table.table
               %tr
                 %th
-                  %i.fa.fa-check
-                  ボケてID
+                  %i.fa.fa-check ボケてID
                 %td= @user.name
-              - unless @user.sex_secret
+              - if @user.sex && !@user.sex_secret
                 %tr
                   %th
-                    %i.fa.fa-user
-                    性別
+                    %i.fa.fa-user &nbsp;性別
                   %td= display_sex(@user.sex)
+              - if @user.pref && !@user.pref_secret
+                %tr
+                  %th
+                    %i.fa.fa-map-marker &nbsp;都道府県
+                  %td= Pref.find(@user.pref).name
+              - if @user.birthday && !@user.birthday_secret
+                %tr
+                  %th
+                    %i.fa.fa-heart &nbsp;生年月日
+                  %td= l @user.birthday, format: :long
               %tr
                 %th
-                  %i.fa.fa-star
-                  星の合計
-                %td
+                  %i.fa.fa-star &nbsp;星の合計
+                %td= @user.ratings_count
               %tr
                 %th
-                  %i.fa.fa-comment
-                  ボケの投稿数
-                %td
+                  %i.fa.fa-comment &nbsp;ボケの投稿数
+                %td= @user.bokes_count
               %tr
                 %th
-                  %i.fa.fa-picture-o
-                  お題投稿数
-                %td
+                  %i.fa.fa-picture-o &nbsp;お題投稿数
+                %td= @user.themes_count
               %tr
                 %th
-                  %i.fa.fa-pencil
-                  プロフィール
+                  %i.fa.fa-pencil &nbsp;プロフィール
                 %td= simple_format @user.profile
-
       .row.profile-boke
         %h2= "#{@user.nickname}さんの投稿したボケ"
         - 1.step(3) do |i|
