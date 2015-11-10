@@ -3,7 +3,6 @@
 .row
   .col-md-9
     = render 'tabs'
-
     .wrapper
       .row.profile
         .col-sm-4.col-xs-12
@@ -53,26 +52,22 @@
                 %td= simple_format @user.profile
       .row.profile-boke
         %h2= "#{@user.nickname}さんの投稿したボケ"
-        - 1.step(3) do |i|
+        - @bokes.each do |boke|
           .boke-horizon.col-md-4
-            %a.photo{href: "/boke/36699959"}
-              %img{src: "//d2dcan0armyq93.cloudfront.net/photo/odai/600/d706a89dadfe97fdac87ef9dfb866273_600.jpg"}
+            .photo
+              = link_to boke_path(boke) do
+                = image_tag boke.theme.image_url
             .photo-meta
-              %a{href: "/user/Yuki1984"}
-                %span.fa.fa-camera{title: "photo by"}
-                  ユキ
-              %a{href: "/user/Yuki1984"}
-                %span.fa.fa-picture-o{title: "oday by"}
-                  ユキ
-            .text ーとなんじゃねーの？どんだけ暇だよ
+              = link_to member_path(boke.theme.user) do
+                %span.fa.fa-picture-o{title: 'odai by'}
+                = "odai by #{boke.theme.user.try(:nickname)}"
+            .text= boke.text
             .rating
-              %a{href: "/boke/36699959"}
+              = link_to boke_path(boke) do
                 %i.fa.fa-star.fa-lg
                 &nbsp;
                 %b 1,357
-          - if i % 3  == 0
-            .clear
-
+        .clear
         .text-right
           = link_to "#{@user.nickname}さんのボケをもっとみる", bokes_member_path
 
