@@ -3,6 +3,7 @@ class Boke < ActiveRecord::Base
 
   enum sort: %i(recent hot popular pickup legend)
 
+  has_many :ratings
   belongs_to :category, -> { Category.boke }
   belongs_to :user
   belongs_to :theme

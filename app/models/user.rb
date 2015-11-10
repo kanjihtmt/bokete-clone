@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
 
   has_many :bokes
   has_many :themes
+  has_many :ratings
 end
