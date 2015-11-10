@@ -1,0 +1,28 @@
+- @bokes.each do |boke|
+  .boke
+    .boke-photo
+      .boke-photo-content
+        = link_to boke_path(boke) do
+          = image_tag boke.theme.image_url
+        .boke-photo-meta
+          = link_to member_path(boke.theme.user) do
+            %span.fa.fa-camera{title: 'photo by'}
+            = "photo by #{boke.theme.user.try(:nickname)}"
+          &nbsp;
+          = link_to member_path(boke.theme.user) do
+            %span.fa.fa-picture-o{title: 'odai by'}
+            = "odai by #{boke.theme.user.try(:nickname)}"
+
+    %h3.boke-text= boke.text
+
+    .boke-meta.clearfix
+      .boke-information
+        .boke-information-row
+          .boke-stars
+            = link_to boke_path(boke), target: "_self" do
+              %i.fa.fa-star{style: "color:#ebbf2a;"}
+              = number_with_delimiter(boke.ratings_count)
+          .boke-information-label
+            = link_to elapsed_time(boke.created_at), boke_path(boke), target: "_self"
+        .boke-information-row
+          .boke-rate
