@@ -14,8 +14,7 @@ class BokesController < ApplicationController
   end
 
   def create
-    @boke = @theme.bokes.build(boke_params)
-
+    @boke = current_user.bokes.build(boke_params.merge(theme: @theme))
     if @boke.save
       redirect_to bokes_path, notice: 'ボケを作成しました。'
     else
