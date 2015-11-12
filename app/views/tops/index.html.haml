@@ -6,50 +6,31 @@
 
     .wrapper.clearfix
       %h2 人気ボケ
-      .boke
-        .boke-photo
-          .boke-photo-content
-            %a{href: "/odai/1714604"}
-              %img{src: "//d2dcan0armyq93.cloudfront.net/photo/odai/600/0b7bd42def3aa49e7846d38f2b795f0f_600.jpg"}
-            .boke-photo-meta
-              %a
-                %span.fa.fa-camera{title: 'photo by'} おらんゆうたん
-              &nbsp;
-              %a
-                %span.fa.fa-picture-o{title: 'odai by'} おらんゆうたん
 
-        %h3{class: "boke-text"} こ／やめとこうよ、何かヤバイって！
+      = render partial: 'boke', locals: {boke: @popular}
 
-        .boke-meta.clearfix
-          .boke-information
-            .boke-information-row
-              .boke-stars
-                %a{href: "/boke/36625240", target: "_self"}
-                  %i.fa.fa-star{style: "color:#ebbf2a;"}
-                  9,015
-              .boke-information-label
-                %a{href: "/boke/36625240", target: "_self"} 2日くらい前
-            .boke-information-row
-              .boke-rate
-
-
-      .text-center
-        = link_to 'もっとみる', bokes_path(tab: 'popular'), class: 'btn btn-warning btn-long'
+      - if @popular
+        .text-center
+          = link_to 'もっとみる', bokes_path(tab: 'popular'), class: 'btn btn-warning btn-long'
+      - else
+        %p.alert.alert-danger 3日以内に投稿されたボケがありません。
 
       %h2.index-title 注目ボケ
 
-      - 1.step(6) do |i|
+      - @hots.each_with_index do |boke, i|
         .boke-horizon.col-md-4
-          %a.photo{href: "/boke/36699959"}
-            %img{src: "//d2dcan0armyq93.cloudfront.net/photo/odai/600/d706a89dadfe97fdac87ef9dfb866273_600.jpg"}
+          = link_to boke_path(boke), class: 'photo' do
+            = image_tag boke.theme.image_url
           .photo-meta
-            %a{href: "/user/Yuki1984"}
-              %span.fa.fa-camera{title: "photo by"}
-                ユキ
-            %a{href: "/user/Yuki1984"}
-              %span.fa.fa-picture-o{title: "oday by"}
-                ユキ
-          .text ーとなんじゃねーの？どんだけ暇だよ
+            = link_to member_path(boke.theme.user) do
+              %span.fa.fa-camera{title: 'photo by'}
+              = "photo by #{boke.theme.user.try(:nickname)}"
+            &nbsp;
+            = link_to member_path(boke.theme.user) do
+              %span.fa.fa-picture-o{title: 'odai by'}
+              = "odai by #{boke.theme.user.try(:nickname)}"
+
+          .text= boke.text
           .rating
             %a{href: "/boke/36699959"}
               %i.fa.fa-star.fa-lg
@@ -58,8 +39,11 @@
         - if i % 3  == 0
           .clear
 
-      .text-center.clearfix
-        = link_to 'もっとみる', bokes_path(tab: 'hot'), class: 'btn btn-warning btn-long'
+      - if @hots.count > 0
+        .text-center.clearfix
+          = link_to 'もっとみる', bokes_path(tab: 'hot'), class: 'btn btn-warning btn-long'
+      - else
+        %p.alert.alert-danger 12時間以内に投稿されたボケがありません。
 
       %h2 新着ボケ
 
