@@ -1,1 +1,20 @@
 .boke-horizon.col-md-4
+  = link_to boke_path(boke), class: 'photo' do
+    = image_tag boke.theme.image_url
+  .photo-meta
+    = link_to member_path(boke.theme.user) do
+      %span.fa.fa-camera{title: 'photo by'}
+      = "photo by #{boke.theme.user.try(:nickname)}"
+    &nbsp;
+    = link_to member_path(boke.theme.user) do
+      %span.fa.fa-picture-o{title: 'odai by'}
+      = "odai by #{boke.theme.user.try(:nickname)}"
+
+  .text= boke.text
+  .rating
+    %a{href: "/boke/36699959"}
+      %i.fa.fa-star.fa-lg
+      &nbsp;
+      %b 1,357
+- if (i + 1) % 3  == 0
+  .clear
