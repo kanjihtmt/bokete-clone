@@ -4,6 +4,7 @@
   .col-md-8
     = render 'bokes_tabs'
     .wrapper
+      = render partial: 'boke', locals: { boke: @boke }
 
   .col-md-4
     = render 'widget'
