@@ -23,5 +23,6 @@
             = number_with_delimiter(boke.ratings_count)
         .boke-information-label
           = link_to elapsed_time(boke.created_at), boke_path(boke), target: "_self"
-      .boke-information-row
-        .boke-rate
+      - if user_signed_in?
+        .boke-information-row
+          .boke-rate{'data-score': boke.ratings.find_by(user: current_user).try(:rank)}

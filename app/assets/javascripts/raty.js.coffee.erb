@@ -1,0 +1,15 @@
+#= require jquery.raty
+$ ->
+  $('.boke-rate').raty
+    cancel: true
+    number: 3
+    cancelOff: '<%= image_path('cancel-off.png') %>'
+    cancelOn : '<%= image_path('cancel-on.png') %>'
+    starHalf : '<%= image_path('star-half.png') %>'
+    starOff  : '<%= image_path('star-off.png') %>'
+    starOn   : '<%= image_path('star-on.png') %>'
+    click: (score, event) ->
+      raty = $(event.target).parent()
+      $(this).data('score', score)
+    score: ->
+      $(this).data('score')
