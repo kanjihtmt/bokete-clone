@@ -1,4 +1,5 @@
 class BokesController < ApplicationController
+  before_action :authenticate_user!, except: %i(index show)
   before_action :set_theme, except: %i(index show)
   before_action :set_boke, only: %i(show)
 
