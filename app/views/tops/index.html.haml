@@ -7,9 +7,8 @@
     .wrapper.clearfix
       %h2 人気ボケ
 
-      = render partial: 'boke', locals: {boke: @popular}
-
       - if @popular
+        = render partial: 'boke', locals: {boke: @popular}
         .text-center
           = link_to 'もっとみる', bokes_path(tab: 'popular'), class: 'btn btn-warning btn-long'
       - else
