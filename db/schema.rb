@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20151110220352) do
     t.integer  "boke_id"
   end
 
-  add_index "ratings", ["boke_id"], name: "index_rations_on_boke_id", using: :btree
+  add_index "ratings", ["boke_id"], name: "index_ratings_on_boke_id", using: :btree
   add_index "ratings", ["user_id"], name: "index_ratings_on_user_id", using: :btree
 
   create_table "themes", force: :cascade do |t|
