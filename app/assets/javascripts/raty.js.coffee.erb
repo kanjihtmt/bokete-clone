@@ -9,7 +9,15 @@ $ ->
     starOff  : '<%= image_path('star-off.png') %>'
     starOn   : '<%= image_path('star-on.png') %>'
     click: (score, event) ->
-      raty = $(event.target).parent()
-      $(this).data('score', score)
+      if score > 0
+        $('.js-show-comment').show()
+        alert score + ':' + $(this).data('id')
+      else
+        $('.js-show-comment').hide()
+        $('.comment-area').hide()
     score: ->
       $(this).data('score')
+
+  $('.js-show-comment').click ->
+    $(this).hide()
+    $('.comment-area').show()

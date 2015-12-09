@@ -25,4 +25,17 @@
           = link_to elapsed_time(boke.created_at), boke_path(boke), target: "_self"
       - if user_signed_in?
         .boke-information-row
-          .boke-rate{'data-score': boke.ratings.find_by(user: current_user).try(:rank)}
+          .boke-rate{'data-score': boke.ratings.find_by(user: current_user).try(:rank), 'data-id': boke.id}
+        .boke-information-row.js-show-comment{style: 'display:none'}
+          %button.btn.btn-default コメントする
+
+        .boke-information-row.comment-area{style: 'display:none'}
+          .row.boke-comment-input
+            %label.pull-left コメント
+            %input.form-control.pull-left.comment{placeholder: "コメントを入力", type: "text"}
+            %span.pull-left
+              %button.btn.btn-default{type: 'submit'} 送信
+            %span.pull-left
+              %button.close{type: 'button'}
+                %span{'aria-hidden': "true"} x
+                %span.sr-only Close
