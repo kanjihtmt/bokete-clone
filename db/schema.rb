@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151110220352) do
+ActiveRecord::Schema.define(version: 20151209040354) do
 
   create_table "bokes", force: :cascade do |t|
     t.text     "text"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20151110220352) do
   end
 
   create_table "ratings", force: :cascade do |t|
-    t.integer  "rank"
+    t.integer  "score"
     t.string   "comment"
     t.integer  "user_id"
     t.datetime "created_at", null: false
